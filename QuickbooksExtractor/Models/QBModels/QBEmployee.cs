@@ -1,0 +1,109 @@
+using System;
+using System.Collections.Generic;
+
+namespace QuickbooksExtractor.Models
+{
+
+    public partial class QBEmployee
+    {
+        public string ListID { get; set; }
+        public Nullable<System.DateTime> TimeCreated { get; set; }
+        public Nullable<System.DateTime> TimeModified { get; set; }
+        public string EditSequence { get; set; }
+        public string Name { get; set; }
+        public bool IsActive { get; set; }
+        public string Salutation { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string JobTitle { get; set; }
+        public string SupervisorRefListID { get; set; }
+        public string SupervisorRefFullName { get; set; }
+        public string Department { get; set; }
+        public string Description { get; set; }
+        public Nullable<decimal> TargetBonus { get; set; }
+        public string EmployeeAddressAddr1 { get; set; }
+        public string EmployeeAddressAddr2 { get; set; }
+        public string EmployeeAddressCity { get; set; }
+        public string EmployeeAddressState { get; set; }
+        public string EmployeeAddressProvince { get; set; }
+        public string EmployeeAddressCounty { get; set; }
+        public string EmployeeAddressPostalCode { get; set; }
+        public string PrintAs { get; set; }
+        public string Phone { get; set; }
+        public string Mobile { get; set; }
+        public string Pager { get; set; }
+        public string PagerPIN { get; set; }
+        public string AltPhone { get; set; }
+        public string Fax { get; set; }
+        public string SSN { get; set; }
+        public string SIN { get; set; }
+        public string NiNumber { get; set; }
+        public string MaritalStatus { get; set; }
+        public string Email { get; set; }
+        public string AdditionalContactRef1ContactName { get; set; }
+        public string AdditionalContactRef1ContactValue { get; set; }
+        public string AdditionalContactRef2ContactName { get; set; }
+        public string AdditionalContactRef2ContactValue { get; set; }
+        public string AdditionalContactRef3ContactName { get; set; }
+        public string AdditionalContactRef3ContactValue { get; set; }
+        public string AdditionalContactRef4ContactName { get; set; }
+        public string AdditionalContactRef4ContactValue { get; set; }
+        public string AdditionalContactRef5ContactName { get; set; }
+        public string AdditionalContactRef5ContactValue { get; set; }
+        public string AdditionalContactRef6ContactName { get; set; }
+        public string AdditionalContactRef6ContactValue { get; set; }
+        public string AdditionalContactRef7ContactName { get; set; }
+        public string AdditionalContactRef7ContactValue { get; set; }
+        public string AdditionalContactRef8ContactName { get; set; }
+        public string AdditionalContactRef8ContactValue { get; set; }
+        public string EmergencyContactsPrimaryContactName { get; set; }
+        public string EmergencyContactsPrimaryContactValue { get; set; }
+        public string EmergencyContactsPrimaryContactRelation { get; set; }
+        public string EmergencyContactsSecondaryContactName { get; set; }
+        public string EmergencyContactsSecondaryContactValue { get; set; }
+        public string EmergencyContactsSecondaryContactRelation { get; set; }
+        public string EmployeeType { get; set; }
+        public string PartOrFullTime { get; set; }
+        public string Exempt { get; set; }
+        public string KeyEmployee { get; set; }
+        public string Gender { get; set; }
+        public string Sex { get; set; }
+        public Nullable<System.DateTime> HiredDate { get; set; }
+        public Nullable<System.DateTime> OriginalHireDate { get; set; }
+        public Nullable<System.DateTime> AdjustedServiceDate { get; set; }
+        public Nullable<System.DateTime> ReleasedDate { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
+        public string USCitizen { get; set; }
+        public string Ethnicity { get; set; }
+        public string Disabled { get; set; }
+        public string DisabilityDesc { get; set; }
+        public string OnFile { get; set; }
+        public Nullable<System.DateTime> WorkAuthExpireDate { get; set; }
+        public string USVeteran { get; set; }
+        public string MilitaryStatus { get; set; }
+        public string AccountNumber { get; set; }
+        public string Notes { get; set; }
+        public string BillingRateRefListID { get; set; }
+        public string BillingRateRefFullName { get; set; }
+        public string PayrollInfoPayPeriod { get; set; }
+        public string PayrollInfoClassRefListID { get; set; }
+        public string PayrollInfoClassRefFullName { get; set; }
+        public string PayrollInfoUseTimeDataToCreatePaychecks { get; set; }
+        public Nullable<double> PayrollInfoSickHoursHoursAvailable { get; set; }
+        public string PayrollInfoSickHoursAccrualPeriod { get; set; }
+        public Nullable<double> PayrollInfoSickHoursHoursAccrued { get; set; }
+        public Nullable<double> PayrollInfoSickHoursMaximumHours { get; set; }
+        public bool PayrollInfoSickHoursIsResettingHoursEachNewYear { get; set; }
+        public Nullable<double> PayrollInfoSickHoursHoursUsed { get; set; }
+        public Nullable<System.DateTime> PayrollInfoSickHoursAccrualStartDate { get; set; }
+        public Nullable<double> PayrollInfoVacationHoursHoursAvailable { get; set; }
+        public string PayrollInfoVacationHoursAccrualPeriod { get; set; }
+        public Nullable<double> PayrollInfoVacationHoursHoursAccrued { get; set; }
+        public Nullable<double> PayrollInfoVacationHoursMaximumHours { get; set; }
+        public bool PayrollInfoVacationHoursIsResetHoursEachNewYear { get; set; }
+        public Nullable<double> PayrollInfoVacationHoursHoursUsed { get; set; }
+        public Nullable<System.DateTime> PayrollInfoVacationHoursAccrualStartDate { get; set; }
+        public string ExternalGUID { get; set; }
+    }
+}
