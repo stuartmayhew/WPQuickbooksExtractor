@@ -9,8 +9,8 @@ namespace QuickbooksExtractor.Helpers
 {
     public static class CommonProcs
     {
-        public static string QBConnStr = "Data Source=13.58.68.10;Initial Catalog=WPAccess;Persist Security Info=True;User ID=sa;Password=Sh@dow111";
-        public static string WCompanyConnStr = "Data Source=13.58.68.10;Initial Catalog=WPCompany;Persist Security Info=True;User ID=sa;Password=Sh@dow111";
+        public static string QBConnStr = "Data Source=52.15.204.7;Initial Catalog=WPAccess;Persist Security Info=True;User ID=sa;Password=Sh@dow111;Connection Timeout=600";
+        public static string WCompanyConnStr = "Data Source=52.15.204.7;Initial Catalog=WPCompany;Persist Security Info=True;User ID=sa;Password=Sh@dow111;Connection Timeout=600;Max Pool Size=1000;";
 
         public static string TimeStampString(DateTime date)
         {
@@ -24,7 +24,7 @@ namespace QuickbooksExtractor.Helpers
             return tsString;
         }
 
-        public static TConvert ConvertTo<TConvert>(this object entity) where TConvert : new()
+        public static TConvert ConvertTo<TConvert>(this object entity,bool hasMapped = false,string tableName = "") where TConvert : new()
         {
             var convertProperties = TypeDescriptor.GetProperties(typeof(TConvert)).Cast<PropertyDescriptor>();
             var entityProperties = TypeDescriptor.GetProperties(entity).Cast<PropertyDescriptor>();
@@ -34,14 +34,45 @@ namespace QuickbooksExtractor.Helpers
             foreach (var entityProperty in entityProperties)
             {
                 var property = entityProperty;
-                var convertProperty = convertProperties.FirstOrDefault(prop => prop.Name == property.Name);
+                string mappedName = "";
+                if (hasMapped)
+                    mappedName = MapName(property.Name, tableName);
+                else
+                    mappedName = property.Name;
+                var convertProperty = convertProperties.FirstOrDefault(prop => prop.Name == mappedName);
                 if (convertProperty != null)
                 {
-                    convertProperty.SetValue(convert, Convert.ChangeType(entityProperty.GetValue(entity), convertProperty.PropertyType));
+                    if (entityProperty.GetValue(entity) != null)
+                        convertProperty.SetValue(convert, Convert.ChangeType(entityProperty.GetValue(entity), convertProperty.PropertyType));
+                    else
+                    {
+                        switch (convertProperty.PropertyType.Name)
+                        {
+                            case "decimal":
+                                convertProperty.SetValue(convert, 0.0M);
+                                break;
+                        }
+
+                    }
                 }
             }
 
             return convert;
+        }
+
+        public static string MapName(string name, string tableName)
+        {
+            string sql = "SELECT WPField FROM FieldMap WHERE ";
+            string returnName = "";
+            sql += "WPTable='" + tableName + "' ";
+            sql += "AND QBField = '" + name + "'";
+            using (clsDataGetter dg = new clsDataGetter(CommonProcs.WCompanyConnStr))
+            {
+                returnName = dg.GetScalarString(sql);
+                if (returnName == string.Empty)
+                    returnName = name;
+            }
+            return returnName;
         }
     }
 }

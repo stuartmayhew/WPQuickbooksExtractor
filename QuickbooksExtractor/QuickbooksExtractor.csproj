@@ -59,6 +59,8 @@
     <Compile Include="Models\QBModels\QBCustomer.cs" />
     <Compile Include="Models\QBModels\QBEmployee.cs" />
     <Compile Include="Models\QBModels\QBPayrollItem.cs" />
+    <Compile Include="Models\QBModels\QBVendor.cs" />
+    <Compile Include="Models\Vendor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

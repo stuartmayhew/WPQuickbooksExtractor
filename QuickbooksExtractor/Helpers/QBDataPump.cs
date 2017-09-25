@@ -48,11 +48,25 @@ namespace QuickbooksExtractor.Helpers
             {
                 foreach (var QBemp in employees)
                 {
-                    Employee emp = QBemp.ConvertTo<Employee>();
-                    Console.WriteLine("Employee " + emp.LastName + "," + emp.FirstName);
+                    if (QBemp.PayrollInfoClassRefFullName != null && (QBemp.PayrollInfoClassRefFullName.Contains("00") || QBemp.PayrollInfoClassRefFullName.Contains("01") || QBemp.PayrollInfoClassRefFullName.Contains("02")))
+                    {
+                        Employee emp = QBemp.ConvertTo<Employee>(true,"Employee");
+                        Console.WriteLine("Employee " + emp.LastName + "," + emp.FirstName);
+                        emp.Branch = emp.PayrollInfoClassRefFullName.Substring(0, 2);
 
-                    emp.QBFile = Company;
-                    new ModelToSQL<Employee>().WriteInsertSQL("Employee", emp, "EmployeeID", CommonProcs.WCompanyConnStr);
+                        emp.QBFile = Company;
+                        new ModelToSQL<Employee>().WriteInsertSQL("Employee", emp, "EmployeeID", CommonProcs.WCompanyConnStr,true);
+                    }
+                    else
+                    {
+                        Employee emp = QBemp.ConvertTo<Employee>(true, "Employee");
+                        Console.WriteLine("Employee " + emp.LastName + "," + emp.FirstName);
+                        emp.Branch = "00";
+
+                        emp.QBFile = Company;
+                        new ModelToSQL<Employee>().WriteInsertSQL("Employee", emp, "EmployeeID", CommonProcs.WCompanyConnStr);
+                    }
+
                 }
             }
             return employees.Count;
@@ -109,6 +123,29 @@ namespace QuickbooksExtractor.Helpers
                 }
             }
             return clsItems.Count;
+        }
+
+        public static int PumpAllVendors(string Company)
+        {
+            Console.WriteLine("Vendors for Company " + Company);
+            string sql = "SELECT * FROM Vendor";
+            List<QBVendor> vendors = new ODBCReaderToModel<QBVendor>().CreateList(sql, Company);
+            using (clsDataGetter dg = new clsDataGetter(CommonProcs.WCompanyConnStr))
+            {
+                dg.RunCommand("DELETE FROM Vendor WHERE QBFile='" + Company + "'");
+            }
+            if (vendors.Count > 0)
+            {
+                foreach (var QBvend in vendors)
+                {
+                        Vendor vend = QBvend.ConvertTo<Vendor>(true, "Vendor");
+                        Console.WriteLine("Vendor " + vend.Name);
+                        vend.QBFile = Company;
+                        new ModelToSQL<Vendor>().WriteInsertSQL("Vendor", vend, "VendorID", CommonProcs.WCompanyConnStr, true);
+
+                }
+            }
+            return vendors.Count;
         }
     }
 }

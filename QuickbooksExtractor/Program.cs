@@ -15,7 +15,8 @@ namespace QuickbooksExtractor
             DateTime start = DateTime.Now;
 
             KillProcess();
-
+            int vendCount = QBDataPump.PumpAllVendors("W");
+            KillProcess();
             int custCount = QBDataPump.PumpAllCustomers("W");
             KillProcess();
             int emCount = QBDataPump.PumpAllEmployees("W");
@@ -29,6 +30,8 @@ namespace QuickbooksExtractor
             Console.WriteLine("DONE start " + start + " done " + end);
 
             start = DateTime.Now;
+            KillProcess();
+            vendCount = QBDataPump.PumpAllVendors("K");
 
             custCount = QBDataPump.PumpAllCustomers("K");
             KillProcess();
@@ -38,6 +41,19 @@ namespace QuickbooksExtractor
             KillProcess();
             prItemCount = QBDataPump.PumpAllPayrollItems("K");
             KillProcess();
+
+            end = DateTime.Now;
+
+            start = DateTime.Now;
+
+            //custCount = QBDataPump.PumpAllCustomers("O");
+            //KillProcess();
+            //emCount = QBDataPump.PumpAllEmployees("O");
+            //KillProcess();
+            //clsCount = QBDataPump.PumpAllClass("O");
+            //KillProcess();
+            //prItemCount = QBDataPump.PumpAllPayrollItems("O");
+            //KillProcess();
 
             end = DateTime.Now;
             Console.WriteLine("DONE start " + start + " done " + end);

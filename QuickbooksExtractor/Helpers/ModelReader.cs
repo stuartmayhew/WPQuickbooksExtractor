@@ -82,22 +82,25 @@ namespace QuickbooksExtractor.Helpers
 
     public class ModelToSQL<T>
     {
-        public virtual int WriteInsertSQL(string tableName, T ModelToSubmit, string pKeyName, string connStr)
+        public virtual int WriteInsertSQL(string tableName, T ModelToSubmit, string pKeyName, string connStr,bool hasMapped = false)
         {
 
             int newSubmitID = -1;
+            string mappedName = "";
 
             var NotMapped = new List<String>();
 
             var props = typeof(T).GetProperties();
-            foreach (var prop in props)
-            {
-                NotMapped.Add(prop.Name);
-            }
+
             NotMapped.Add(pKeyName);
 
             string sql = "INSERT INTO " + tableName + "(";
             var properties = typeof(T).GetProperties();
+            foreach (var prop in properties)
+            {
+                if (!NotMapped.Contains(prop.Name))
+                    sql += prop.Name + ",";
+            }
             sql = sql.Substring(0, sql.Length - 1);
             sql += ") VALUES(";
             foreach (var prop in properties)
@@ -110,7 +113,10 @@ namespace QuickbooksExtractor.Helpers
                         {
                             propertyType = propertyType.GetGenericArguments()[0];
                         }
-
+                        if (hasMapped)
+                            mappedName = CommonProcs.MapName(prop.Name, tableName);
+                        else
+                            mappedName = prop.Name;
                         var value = ModelToSubmit.GetType().GetProperty(prop.Name).GetValue(ModelToSubmit);
                         if (propertyType.Name == "Int32")
                         {
@@ -162,6 +168,7 @@ namespace QuickbooksExtractor.Helpers
             }
             return newSubmitID;
         }
+
 
         public string ConvertToBool(bool value)
         {

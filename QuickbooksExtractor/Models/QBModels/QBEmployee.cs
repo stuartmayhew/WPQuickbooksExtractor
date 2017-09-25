@@ -7,8 +7,8 @@ namespace QuickbooksExtractor.Models
     public partial class QBEmployee
     {
         public string ListID { get; set; }
-        public Nullable<System.DateTime> TimeCreated { get; set; }
-        public Nullable<System.DateTime> TimeModified { get; set; }
+        public DateTime? TimeCreated { get; set; }
+        public DateTime? TimeModified { get; set; }
         public string EditSequence { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
@@ -21,7 +21,7 @@ namespace QuickbooksExtractor.Models
         public string SupervisorRefFullName { get; set; }
         public string Department { get; set; }
         public string Description { get; set; }
-        public Nullable<decimal> TargetBonus { get; set; }
+        public decimal? TargetBonus { get; set; }
         public string EmployeeAddressAddr1 { get; set; }
         public string EmployeeAddressAddr2 { get; set; }
         public string EmployeeAddressCity { get; set; }
@@ -69,17 +69,17 @@ namespace QuickbooksExtractor.Models
         public string KeyEmployee { get; set; }
         public string Gender { get; set; }
         public string Sex { get; set; }
-        public Nullable<System.DateTime> HiredDate { get; set; }
-        public Nullable<System.DateTime> OriginalHireDate { get; set; }
-        public Nullable<System.DateTime> AdjustedServiceDate { get; set; }
-        public Nullable<System.DateTime> ReleasedDate { get; set; }
-        public Nullable<System.DateTime> BirthDate { get; set; }
+        public DateTime? HiredDate { get; set; }
+        public DateTime? OriginalHireDate { get; set; }
+        public DateTime? AdjustedServiceDate { get; set; }
+        public DateTime? ReleasedDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public string USCitizen { get; set; }
         public string Ethnicity { get; set; }
         public string Disabled { get; set; }
         public string DisabilityDesc { get; set; }
         public string OnFile { get; set; }
-        public Nullable<System.DateTime> WorkAuthExpireDate { get; set; }
+        public DateTime? WorkAuthExpireDate { get; set; }
         public string USVeteran { get; set; }
         public string MilitaryStatus { get; set; }
         public string AccountNumber { get; set; }
