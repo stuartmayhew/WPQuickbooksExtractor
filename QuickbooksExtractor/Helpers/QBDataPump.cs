@@ -21,7 +21,9 @@ namespace QuickbooksExtractor.Helpers
             {
                 foreach (var QBcust in customers)
                 {
-                    if (QBcust.Name.Contains("00") || QBcust.Name.Contains("01") || QBcust.Name.Contains("02"))
+                    if (QBcust.Name.ToUpper().Contains("DO NOT USE"))
+                        continue;
+                    if (QBcust.ParentRefListID != null)
                     {
                         Customer cust = QBcust.ConvertTo<Customer>();
                         Console.WriteLine("Customer " + cust.Name);
@@ -29,6 +31,16 @@ namespace QuickbooksExtractor.Helpers
                         cust.QBFile = Company;
                         cust.Branch = cust.Name.Substring(0, 2);
                         new ModelToSQL<Customer>().WriteInsertSQL("Customer", cust, "CustomerID", CommonProcs.WCompanyConnStr);
+                    }
+                    else
+                    {
+                        Customer cust = QBcust.ConvertTo<Customer>();
+                        Console.WriteLine("Customer " + cust.Name);
+
+                        cust.QBFile = Company;
+                        cust.isParent = true;
+                        new ModelToSQL<Customer>().WriteInsertSQL("Customer", cust, "CustomerID", CommonProcs.WCompanyConnStr);
+
                     }
                 }
             }
@@ -138,7 +150,7 @@ namespace QuickbooksExtractor.Helpers
             {
                 foreach (var QBvend in vendors)
                 {
-                        Vendor vend = QBvend.ConvertTo<Vendor>(true, "Vendor");
+                        Vendor vend = QBvend.ConvertTo<Vendor>(false, "Vendor");
                         Console.WriteLine("Vendor " + vend.Name);
                         vend.QBFile = Company;
                         new ModelToSQL<Vendor>().WriteInsertSQL("Vendor", vend, "VendorID", CommonProcs.WCompanyConnStr, true);

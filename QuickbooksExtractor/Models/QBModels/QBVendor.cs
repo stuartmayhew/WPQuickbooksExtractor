@@ -57,13 +57,11 @@ namespace QuickbooksExtractor.Models
       public string Contact {get;set;}
       public string AltContact {get;set;}
       public string NameOnCheck {get;set;}
-      public string AccountNumber {get;set;}
       public string Notes {get;set;}
       public string VendorTypeRefListID {get;set;}
       public string VendorTypeRefFullName {get;set;}
       public string TermsRefListID {get;set;}
       public string TermsRefFullName {get;set;}
-      public decimal? CreditLimit {get;set;}
       public string VendorTaxIdent {get;set;}
       public bool IsVendorEligibleFor1099 {get;set;}
       public bool IsVendorEligibleForT4A {get;set;}

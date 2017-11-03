@@ -16,6 +16,7 @@ namespace QuickbooksExtractor.Models
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string SSN { get; set; }
+        public DateTime DOB { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string City { get; set; }
@@ -24,7 +25,7 @@ namespace QuickbooksExtractor.Models
         public string Department { get; set; }
         public bool IsActive { get; set; }
         public string Salutation { get; set; }
-        public string JobTitle { get; set; }
+        public string JobTitleID { get; set; }
         public string SupervisorID { get; set; }
         public string Phone { get; set; }
         public string Cell { get; set; }

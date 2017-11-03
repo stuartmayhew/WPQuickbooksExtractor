@@ -19,9 +19,25 @@ namespace QuickbooksExtractor.Models
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string BillAddressAddr1 { get; set; }
+        public string BillAddressAddr2 { get; set; }
         public string BillAddressCity { get; set; }
         public string BillAddressState { get; set; }
         public string BillAddressPostalCode { get; set; }
+        public string BillAddressNote { get; set; }
+        public string ShipAddressAddr1 { get; set; }
+        public string ShipAddressAddr2 { get; set; }
+        public string ShipAddressCity { get; set; }
+        public string ShipAddressState { get; set; }
+        public string ShipAddressPostalCode { get; set; }
+        public string ShipAddressNote { get; set; }
+        public string TermsRefListID { get; set; }
+        public string TermsRefFullName { get; set; }
+        public string SalesTaxCodeRefListID { get; set; }
+        public string SalesTaxCodeRefFullName { get; set; }
+        public string TaxCodeRefListID { get; set; }
+        public string TaxCodeRefFullName { get; set; }
+        public string ItemSalesTaxRefListID { get; set; }
+        public string ItemSalesTaxRefFullName { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string Email { get; set; }
@@ -32,31 +48,23 @@ namespace QuickbooksExtractor.Models
         public string EditSequence { get; set; }
         public string ClassRefListID { get; set; }
         public string ClassRefFullName { get; set; }
-        public string BillAddressAddr2 { get; set; }
         public string BillAddressAddr3 { get; set; }
         public string BillAddressAddr4 { get; set; }
         public string BillAddressAddr5 { get; set; }
         public string BillAddressProvince { get; set; }
         public string BillAddressCounty { get; set; }
         public string BillAddressCountry { get; set; }
-        public string BillAddressNote { get; set; }
         public string BillAddressBlockAddr1 { get; set; }
         public string BillAddressBlockAddr2 { get; set; }
         public string BillAddressBlockAddr3 { get; set; }
         public string BillAddressBlockAddr4 { get; set; }
         public string BillAddressBlockAddr5 { get; set; }
-        public string ShipAddressAddr1 { get; set; }
-        public string ShipAddressAddr2 { get; set; }
         public string ShipAddressAddr3 { get; set; }
         public string ShipAddressAddr4 { get; set; }
         public string ShipAddressAddr5 { get; set; }
-        public string ShipAddressCity { get; set; }
-        public string ShipAddressState { get; set; }
         public string ShipAddressProvince { get; set; }
         public string ShipAddressCounty { get; set; }
-        public string ShipAddressPostalCode { get; set; }
         public string ShipAddressCountry { get; set; }
-        public string ShipAddressNote { get; set; }
         public string ShipAddressBlockAddr1 { get; set; }
         public string ShipAddressBlockAddr2 { get; set; }
         public string ShipAddressBlockAddr3 { get; set; }
@@ -66,8 +74,6 @@ namespace QuickbooksExtractor.Models
         public string AltContact { get; set; }
         public string CustomerTypeRefListID { get; set; }
         public string CustomerTypeRefFullName { get; set; }
-        public string TermsRefListID { get; set; }
-        public string TermsRefFullName { get; set; }
         public string SalesRepRefListID { get; set; }
         public string SalesRepRefFullName { get; set; }
         
@@ -78,18 +84,6 @@ namespace QuickbooksExtractor.Models
         public Nullable<decimal> OpenBalance { get; set; }
         
         public Nullable<System.DateTime> OpenBalanceDate { get; set; }
-        
-        public string SalesTaxCodeRefListID { get; set; }
-        
-        public string SalesTaxCodeRefFullName { get; set; }
-        
-        public string TaxCodeRefListID { get; set; }
-        
-        public string TaxCodeRefFullName { get; set; }
-        
-        public string ItemSalesTaxRefListID { get; set; }
-        
-        public string ItemSalesTaxRefFullName { get; set; }
         
         public string SalesTaxCountry { get; set; }
         
